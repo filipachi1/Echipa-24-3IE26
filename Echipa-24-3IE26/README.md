@@ -13,5 +13,5 @@ Site web static (`site_instrumente.html`) realizat pentru prezentarea automobile
 - Grindeanu Stefan Madalin
 - Pascariu Darian Toma
 
-## Modificări din VS Code
+## Modificări
 - Modificat in GitHub - Bota Sergiu - Octavian
