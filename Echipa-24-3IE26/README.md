@@ -14,4 +14,4 @@ Site web static (`site_instrumente.html`) realizat pentru prezentarea automobile
 - Pascariu Darian Toma
 
 ## Modificări din VS Code
-- modificat în VScode - nume, prenume
+- Modificat in GitHub - Bota Sergiu - Octavian
