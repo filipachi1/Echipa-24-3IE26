@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURELIA MOTORS | Showroom Auto Exclusivist Mercedes-Benz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #0a0b0e;
+      --bg-card: #12141a;
+      --bg-elevated: #191c24;
+      --gold: #d4af37;
+      --gold-light: #f0d377;
+      --text-main: #f4f5f7;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius: 14px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1240px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 11, 14, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 78px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-emblem {
+      font-size: 1.6rem;
+      color: var(--gold);
+    }
+
+    .brand-name {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 1.15rem;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 2.2px;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links .btn-nav {
+      padding: 10px 18px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      color: var(--gold);
+    }
+
+    .nav-links .btn-nav:hover {
+      background: var(--gold);
+      color: #0a0b0e;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding-top: 78px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(95deg, rgba(10, 11, 14, 0.94) 15%, rgba(10, 11, 14, 0.65) 60%, rgba(10, 11, 14, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 60px 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.14);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #d1d5db;
+      font-size: 1.08rem;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), #b89022);
+      color: #0a0b0e;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      color: var(--gold);
+    }
+
+    .stat span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Sections */
+    .section {
+      padding: 96px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+
+    .section-tag {
+      color: var(--gold);
+      font-size: 0.78rem;
+      letter-spacing: 2.5px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+    }
+
+    /* Controls */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .pill:hover,
+    .pill.active {
+      background: var(--gold);
+      color: #0a0b0e;
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+
+    .search-sort {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .search-sort input,
+    .search-sort select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .search-sort input:focus,
+    .search-sort select:focus {
+      border-color: var(--gold);
+    }
+
+    /* Cars Grid */
+    .cars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 28px;
+    }
+
+    .car-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .car-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 175, 55, 0.45);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .car-image-wrap {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+      background: #16181f;
+    }
+
+    .car-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .car-card:hover .car-image-wrap img {
+      transform: scale(1.06);
+    }
+
+    .car-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(10, 11, 14, 0.85);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.8px;
+    }
+
+    .car-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .car-meta-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .car-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .car-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .car-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 12px;
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .spec-item span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .spec-item strong {
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    .car-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .car-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .btn-details {
+      padding: 9px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-details:hover {
+      background: var(--gold);
+      color: #0a0b0e;
+    }
+
+    /* Experience */
+    .experience-section {
+      background: #0e1015;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* Finance */
+    .finance-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .finance-info h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.1rem;
+      margin-bottom: 14px;
+    }
+
+    .finance-info p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .finance-benefits {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: #e5e7eb;
+    }
+
+    .finance-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      color: #d1d5db;
+    }
+
+    .form-group select,
+    .form-group input[type="range"] {
+      width: 100%;
+    }
+
+    .form-group select {
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    input[type="range"] {
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .monthly-result {
+      background: var(--bg-elevated);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .monthly-result strong {
+      font-size: 1.45rem;
+      color: var(--gold);
+    }
+
+    /* Contact */
+    .contact-section {
+      background: #0e1015;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-grid h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.1rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-grid p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .contact-details p {
+      margin-bottom: 8px;
+      color: #e5e7eb;
+    }
+
+    .contact-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.92rem;
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .form-feedback {
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      min-height: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+    }
+
+    .footer-note {
+      margin-top: 4px;
+      font-size: 0.78rem;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-dialog {
+      position: relative;
+      z-index: 2;
+      background: var(--bg-card);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 16px;
+      max-width: 760px;
+      width: 100%;
+      overflow: hidden;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 3;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(10, 11, 14, 0.85);
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .modal-hero-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .modal-info {
+      padding: 28px;
+    }
+
+    .modal-info h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .modal-specs-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+      padding: 16px;
+      background: var(--bg-elevated);
+      border-radius: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .finance-wrapper,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        flex-direction: column;
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .cars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-content">
+      <a href="#" class="brand">
+        <span class="brand-emblem">✦</span>
+        <div>
+          <span class="brand-name">AURELIA MOTORS</span>
+          <span class="brand-sub">MERCEDES-BENZ & LUXURY GALLERY</span>
+        </div>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#colectie">Colecția Auto</a>
+        <a href="#experienta">Experiența VIP</a>
+        <a href="#finantare">Calculator Leasing</a>
+        <a href="#contact" class="btn-nav">Programează Test Drive</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Meniu">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <img
+      src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1920&q=85"
+      alt="Mercedes-AMG GT Coupe negru metalizat în showroom"
+      class="hero-bg"
+    />
+    <div class="container hero-content">
+      <span class="badge">COLECȚIA 2026 • TIMIȘOARA</span>
+      <h1>Inginerie Germană.<br />Eleganță Fără Compromis.</h1>
+      <p>
+        Descoperă o selecție exclusivistă de automobile Mercedes-Benz, AMG și modele de colecție
+        verificate integral, pregătite pentru livrare imediată.
+      </p>
+      <div class="hero-actions">
+        <a href="#colectie" class="btn btn-gold">Explorează Flota</a>
+        <a href="#finantare" class="btn btn-outline">Simulare Finanțare</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>100%</strong>
+          <span>Istoric Certificat</span>
+        </div>
+        <div class="stat">
+          <strong>24 Luni</strong>
+          <span>Garanție Extinsă</span>
+        </div>
+        <div class="stat">
+          <strong>48h</strong>
+          <span>Livrare oriunde în țară</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inventory / Showroom Section -->
+  <section id="colectie" class="section inventory-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">STOC DISPONIBIL</span>
+        <h2>Colecția Noastră Exclusivistă</h2>
+        <p>Fiecare automobil este inspectat în 150 de puncte tehnice și estetice.</p>
+      </div>
+
+      <!-- Filter & Search Controls -->
+      <div class="controls-bar">
+        <div class="filter-pills" id="filterButtons">
+          <button class="pill active" data-filter="all">Toate Modelele</button>
+          <button class="pill" data-filter="amg">Mercedes-AMG</button>
+          <button class="pill" data-filter="sedan">Limuzine & Sedan</button>
+          <button class="pill" data-filter="suv">SUV & Off-Road</button>
+          <button class="pill" data-filter="special">Ediții Speciale</button>
+        </div>
+        <div class="search-sort">
+          <input type="text" id="searchInput" placeholder="Caută model (ex. G 63, S-Class, GT)..." />
+          <select id="sortSelect" aria-label="Sortează modelele">
+            <option value="featured">Recomandate</option>
+            <option value="price-asc">Preț: Crescător</option>
+            <option value="price-desc">Preț: Descrescător</option>
+            <option value="power-desc">Putere (CP): Maximă</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cars Grid -->
+      <div class="cars-grid" id="carsGrid"></div>
+    </div>
+  </section>
+
+  <!-- VIP Experience Section -->
+  <section id="experienta" class="section experience-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">DE CE AURELIA MOTORS</span>
+        <h2>Standarde de Excelență</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Certificare & Trasabilitate</h3>
+          <p>Fiecare vehicul vine cu raport complet de service autorizat, kilometraj garantat și inspecție tehnică detaliată.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔑</div>
+          <h3>Buy-Back & Trade-In</h3>
+          <p>Evaluăm corect automobilul tău actual în mai puțin de 60 de minute și îl poți folosi drept avans pentru noul Mercedes-Benz.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h3>Detailing Ceramic Inclus</h3>
+          <p>Toate automobilele din showroom beneficiază de tratament profesional cu protecție ceramică înainte de predare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leasing Calculator Section -->
+  <section id="finantare" class="section finance-section">
+    <div class="container finance-wrapper">
+      <div class="finance-info">
+        <span class="section-tag">SOLUȚII FINANCIARE</span>
+        <h2>Calculator Leasing & Credit Auto</h2>
+        <p>Configurează rapid rata lunară estimativă pentru automobilul dorit. Aprobare în 24 de ore pentru persoane juridice și fizice.</p>
+        <ul class="finance-benefits">
+          <li>✓ Dobândă fixă preferențială în EUR</li>
+          <li>✓ Avans flexibil între 15% și 50%</li>
+          <li>✓ Perioadă de finanțare între 12 și 60 de luni</li>
+        </ul>
+      </div>
+      <div class="finance-card">
+        <div class="form-group">
+          <label for="calcCarSelect">Alege Modelul</label>
+          <select id="calcCarSelect"></select>
+        </div>
+        <div class="form-group">
+          <label for="downPaymentRange">Avans: <strong id="downPaymentPct">25%</strong> (<span id="downPaymentVal">0 €</span>)</label>
+          <input type="range" id="downPaymentRange" min="15" max="60" step="5" value="25" />
+        </div>
+        <div class="form-group">
+          <label for="monthsRange">Perioadă: <strong id="monthsVal">48 luni</strong></label>
+          <input type="range" id="monthsRange" min="12" max="60" step="12" value="48" />
+        </div>
+        <div class="monthly-result">
+          <span>Rată lunară estimată (fără TVA):</span>
+          <strong id="monthlyRate">0 € / lună</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Test Drive Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container contact-grid">
+      <div>
+        <span class="section-tag">CONCIERGE AUTO</span>
+        <h2>Programează o Vizionare Privată</h2>
+        <p>Vizitează showroom-ul nostru sau rezervă un test drive dedicat cu unul dintre consilierii noștri certificați.</p>
+        <div class="contact-details">
+          <p><strong>Adresă:</strong> Bulevardul Republicii nr. 45, Timișoara</p>
+          <p><strong>Program:</strong> Luni – Sâmbătă: 09:00 – 19:00</p>
+          <p><strong>Telefon:</strong> +40 720 000 326</p>
+        </div>
+      </div>
+      <form class="contact-form" id="testDriveForm">
+        <div class="form-row">
+          <input type="text" id="clientName" placeholder="Nume și Prenume *" required />
+          <input type="tel" id="clientPhone" placeholder="Număr de telefon *" required />
+        </div>
+        <input type="email" id="clientEmail" placeholder="Adresă de e-mail *" required />
+        <select id="formCarSelect" required>
+          <option value="">Selectează automobilul de interes *</option>
+        </select>
+        <textarea id="clientMessage" rows="3" placeholder="Detalii suplimentare (data preferată pentru test drive, opțiuni buy-back)..."></textarea>
+        <button type="submit" class="btn btn-gold full-width">Trimite Solicitarea</button>
+        <p class="form-feedback" id="formFeedback"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 AURELIA MOTORS — Showroom Auto Premium. Proiect realizat de Echipa-00-3IE26.</p>
+      <p class="footer-note">Toate specificațiile și fotografiile corespund modelelor prezentate.</p>
+    </div>
+  </footer>
+
+  <!-- Car Details Modal -->
+  <div class="modal" id="carModal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalCloseBg"></div>
+    <div class="modal-dialog">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Închide">✕</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const CARS_DATA = [
+      {
+        id: "mb-amg-gt",
+        title: "Mercedes-AMG GT 63 Coupé",
+        category: "amg",
+        badge: "AMG PERFORMANCE",
+        year: 2025,
+        price: 178500,
+        power: 585,
+        acceleration: "3.2 s",
+        drivetrain: "4MATIC+",
+        fuel: "Benzină V8 Biturbo",
+        mileage: "4.200 km",
+        color: "Obsidian Black Metallic",
+        image: "https://plus-auto.fra1.cdn.digitaloceanspaces.com/vehicles_images/240561/240561-4961397.webp",
+        imageAlt: "Mercedes-AMG GT Coupé negru metalizat fotografiat frontal în showroom",
+        description: "Coupé sport pur-sânge echipat cu motor V8 biturbo de 4.0 litri asamblat manual în Affalterbach, direcție pe puntea spate și pachet aerodinamic AMG.",
+        highlights: [
+          "Motor 4.0L V8 Biturbo (585 CP / 800 Nm)",
+          "Suspensie AMG ACTIVE RIDE CONTROL",
+          "Interior piele Nappa Exclusive & fibră de carbon",
+          "Sistem audio Burmester High-End 3D"
+        ]
+      },
+      {
+        id: "mb-g63",
+        title: "Mercedes-AMG G 63",
+        category: "suv",
+        badge: "ICONIC OFF-ROAD",
+        year: 2025,
+        price: 214900,
+        power: 585,
+        acceleration: "4.5 s",
+        drivetrain: "4x4 Permanent",
+        fuel: "Benzină V8 Mild-Hybrid",
+        mileage: "1.850 km",
+        color: "Selenite Grey Magno",
+        image: "https://i.ytimg.com/vi/l0DCpUC1cV8/maxresdefault.jpg",
+        imageAlt: "Mercedes-Benz Clasa G AMG SUV de lux",
+        description: "Legenda Clasa G în versiunea de vârf AMG G 63: trei diferențiale blocabile 100%, evacuare sport laterală și rafinament suprem la interior.",
+        highlights: [
+          "Pachet AMG Night & jante forjate 22 inch",
+          "Trei diferențiale blocabile mecanic",
+          "Scaune multicontur active cu masaj și ventilație",
+          "Faruri MULTIBEAM LED adaptive"
+        ]
+      },
+      {
+        id: "mb-s580",
+        title: "Mercedes-Benz S 580 4MATIC Long",
+        category: "sedan",
+        badge: "FIRST CLASS SEDAN",
+        year: 2024,
+        price: 139000,
+        power: 503,
+        acceleration: "4.4 s",
+        drivetrain: "4MATIC",
+        fuel: "Benzină V8 EQ Boost",
+        mileage: "12.400 km",
+        color: "Nautic Blue Metallic",
+        image: "https://plus-auto.fra1.cdn.digitaloceanspaces.com/vehicles_images/319299/319299-6794316.webp",
+        imageAlt: "Limuzină Mercedes-Benz Clasa S eleganță executivă",
+        description: "Etalonul limuzinelor de lux: ampatament lung, suspensie pneumatică AIRMATIC, direcție integrală și confort acustic de excepție pentru pasagerii spate.",
+        highlights: [
+          "Pachet Executive Rear Lounge cu suport picioare",
+          "Sistem MBUX cu ecran OLED central și head-up display AR",
+          "Suspensie pneumatică AIRMATIC",
+          "Asistent activ la condus PLUS"
+        ]
+      },
+      {
+        id: "mb-c63-amg",
+        title: "Mercedes-AMG C 63 S E Performance",
+        category: "amg",
+        badge: "HYBRID TECH",
+        year: 2024,
+        price: 96500,
+        power: 680,
+        acceleration: "3.4 s",
+        drivetrain: "4MATIC+",
+        fuel: "Plug-In Hybrid",
+        mileage: "8.900 km",
+        color: "Alpine Grey",
+        image: "https://images.cars.com/cldstatic/wp-content/uploads/mercedes-amg-c63-s-e-performance-2024-exterior-oem-01.jpg",
+        imageAlt: "Mercedes-Benz sedan sport din gama C-Class AMG",
+        description: "Tehnologie derivată din Formula 1 cu turbocompresor asistat electric, dezvoltând o putere combinată impresionantă de 680 CP.",
+        highlights: [
+          "Sistem hibrid de performanță 680 CP / 1020 Nm",
+          "Scaune sport AMG Performance",
+          "Moduri de rulare AMG DYNAMIC SELECT",
+          "Frâne compozite AMG de înaltă performanță"
+        ]
+      },
+      {
+        id: "mb-gle-coupe",
+        title: "Mercedes-Benz GLE 450 d 4MATIC Coupé",
+        category: "suv",
+        badge: "SUV COUPÉ",
+        year: 2025,
+        price: 98900,
+        power: 367,
+        acceleration: "5.6 s",
+        drivetrain: "4MATIC",
+        fuel: "Diesel Mild-Hybrid",
+        mileage: "6.100 km",
+        color: "Polar White",
+        image: "https://plus-auto.fra1.cdn.digitaloceanspaces.com/vehicles_images/51889/51889-980792.webp",
+        imageAlt: "SUV Mercedes-Benz alb modern cu linii coupé",
+        description: "Siluetă atletică de coupé combinată cu versatilitatea unui SUV premium și eficiența motorului diesel cu 6 cilindri în linie.",
+        highlights: [
+          "Pachet exterior și interior AMG Line",
+          "Trapă panoramică glisantă",
+          "Cameră 360° și pachet parcare automată",
+          "Cârlig de remorcare rabatabil electric"
+        ]
+      },
+      {
+        id: "porsche-911-gt3",
+        title: "Porsche 911 GT3 (Colecție Privată)",
+        category: "special",
+        badge: "EDIȚIE COLECȚIE",
+        year: 2024,
+        price: 229000,
+        power: 510,
+        acceleration: "3.4 s",
+        drivetrain: "Tracțiune Spate",
+        fuel: "Benzină Aspirat 4.0L",
+        mileage: "2.300 km",
+        color: "GT Silver Metallic",
+        image: "https://plus-auto.fra1.cdn.digitaloceanspaces.com/vehicles_images/354148/354148-7516366.webp",
+        imageAlt: "Automobil sport Porsche 911 de colecție în showroom",
+        description: "Piesă rară din galeria noastră parteneră: motor boxer aspirat natural de 4.0 litri la 9.000 rpm, conceput pentru puritatea condusului pe circuit și șosea.",
+        highlights: [
+          "Motor 4.0L Boxer aspirat natural (9.000 rpm)",
+          "Transmisie PDK sport cu 7 trepte",
+          "Pachet Clubsport & scaune scoică din carbon",
+          "Sistem ridicare punte față (Front Axle Lift)"
+        ]
+      }
+    ];
+
+    const carsGrid = document.getElementById("carsGrid");
+    const filterButtons = document.getElementById("filterButtons");
+    const searchInput = document.getElementById("searchInput");
+    const sortSelect = document.getElementById("sortSelect");
+    const calcCarSelect = document.getElementById("calcCarSelect");
+    const formCarSelect = document.getElementById("formCarSelect");
+
+    let currentFilter = "all";
+
+    function formatPrice(value) {
+      return new Intl.NumberFormat("ro-RO").format(value) + " €";
+    }
+
+    function renderCars() {
+      const query = searchInput.value.trim().toLowerCase();
+      const sortBy = sortSelect.value;
+
+      let filtered = CARS_DATA.filter((car) => {
+        const matchesCategory = currentFilter === "all" || car.category === currentFilter;
+        const matchesQuery =
+          car.title.toLowerCase().includes(query) ||
+          car.description.toLowerCase().includes(query) ||
+          car.fuel.toLowerCase().includes(query);
+        return matchesCategory && matchesQuery;
+      });
+
+      if (sortBy === "price-asc") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortBy === "price-desc") {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (sortBy === "power-desc") {
+        filtered.sort((a, b) => b.power - a.power);
+      }
+
+      if (filtered.length === 0) {
+        carsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #9ca3af; padding: 40px 0;">Nu am găsit automobile care să corespundă criteriilor selectate.</p>`;
+        return;
+      }
+
+      carsGrid.innerHTML = filtered
+        .map(
+          (car) => `
+          <article class="car-card">
+            <div class="car-image-wrap">
+              <img src="${car.image}" alt="${car.imageAlt}" loading="lazy" />
+              <span class="car-badge">${car.badge}</span>
+            </div>
+            <div class="car-body">
+              <div class="car-meta-top">
+                <span>AN ${car.year} • ${car.mileage}</span>
+                <span>${car.drivetrain}</span>
+              </div>
+              <h3 class="car-title">${car.title}</h3>
+              <p class="car-desc">${car.description}</p>
+              <div class="car-specs">
+                <div class="spec-item">
+                  <span>Putere</span>
+                  <strong>${car.power} CP</strong>
+                </div>
+                <div class="spec-item">
+                  <span>0–100 km/h</span>
+                  <strong>${car.acceleration}</strong>
+                </div>
+                <div class="spec-item">
+                  <span>Motorizare</span>
+                  <strong>${car.fuel.split(" ")[0]}</strong>
+                </div>
+              </div>
+              <div class="car-footer">
+                <span class="car-price">${formatPrice(car.price)}</span>
+                <button class="btn-details" onclick="openCarModal('${car.id}')">Specificații & Foto</button>
+              </div>
+            </div>
+          </article>
+        `
+        )
+        .join("");
+    }
+
+    function populateSelects() {
+      CARS_DATA.forEach((car) => {
+        const optCalc = document.createElement("option");
+        optCalc.value = car.price;
+        optCalc.textContent = `${car.title} — ${formatPrice(car.price)}`;
+        calcCarSelect.appendChild(optCalc);
+
+        const optForm = document.createElement("option");
+        optForm.value = car.title;
+        optForm.textContent = `${car.title} (${formatPrice(car.price)})`;
+        formCarSelect.appendChild(optForm);
+      });
+    }
+
+    const downPaymentRange = document.getElementById("downPaymentRange");
+    const monthsRange = document.getElementById("monthsRange");
+    const downPaymentPct = document.getElementById("downPaymentPct");
+    const downPaymentVal = document.getElementById("downPaymentVal");
+    const monthsVal = document.getElementById("monthsVal");
+    const monthlyRate = document.getElementById("monthlyRate");
+
+    function updateLeasing() {
+      const carPrice = Number(calcCarSelect.value);
+      const pct = Number(downPaymentRange.value);
+      const months = Number(monthsRange.value);
+
+      const downAmount = Math.round((carPrice * pct) / 100);
+      const financed = carPrice - downAmount;
+      const annualInterest = 0.049;
+      const monthlyInterest = annualInterest / 12;
+
+      const rate =
+        (financed * monthlyInterest) /
+        (1 - Math.pow(1 + monthlyInterest, -months));
+
+      downPaymentPct.textContent = `${pct}%`;
+      downPaymentVal.textContent = formatPrice(downAmount);
+      monthsVal.textContent = `${months} luni`;
+      monthlyRate.textContent = `${Math.round(rate).toLocaleString("ro-RO")} € / lună`;
+    }
+
+    const carModal = document.getElementById("carModal");
+    const modalBody = document.getElementById("modalBody");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+    const modalCloseBg = document.getElementById("modalCloseBg");
+
+    window.openCarModal = function (carId) {
+      const car = CARS_DATA.find((item) => item.id === carId);
+      if (!car) return;
+
+      modalBody.innerHTML = `
+        <img src="${car.image}" alt="${car.imageAlt}" class="modal-hero-img" />
+        <div class="modal-info">
+          <span class="section-tag">${car.badge} • AN ${car.year}</span>
+          <h3>${car.title}</h3>
+          <p style="color: #d1d5db; margin-bottom: 14px;">${car.description}</p>
+          <div class="modal-specs-list">
+            <div><strong>Putere:</strong> ${car.power} CP</div>
+            <div><strong>Accelerație 0-100:</strong> ${car.acceleration}</div>
+            <div><strong>Tracțiune:</strong> ${car.drivetrain}</div>
+            <div><strong>Combustibil:</strong> ${car.fuel}</div>
+            <div><strong>Rulaj:</strong> ${car.mileage}</div>
+            <div><strong>Culoare:</strong> ${car.color}</div>
+          </div>
+          <h4 style="margin-bottom: 8px; color: var(--gold);">Dotări Cheie:</h4>
+          <ul style="padding-left: 18px; color: #d1d5db; margin-bottom: 22px;">
+            ${car.highlights.map((h) => `<li style="margin-bottom: 4px;">${h}</li>`).join("")}
+          </ul>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <strong style="font-size: 1.5rem; color: var(--gold-light);">${formatPrice(car.price)}</strong>
+            <a href="#contact" class="btn btn-gold" onclick="selectCarForTestDrive('${car.title}')">Rezervă Test Drive</a>
+          </div>
+        </div>
+      `;
+      carModal.classList.add("open");
+      carModal.setAttribute("aria-hidden", "false");
+    };
+
+    window.selectCarForTestDrive = function (carTitle) {
+      formCarSelect.value = carTitle;
+      closeModal();
+    };
+
+    function closeModal() {
+      carModal.classList.remove("open");
+      carModal.setAttribute("aria-hidden", "true");
+    }
+
+    modalCloseBtn.addEventListener("click", closeModal);
+    modalCloseBg.addEventListener("click", closeModal);
+
+    filterButtons.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("pill")) return;
+      document.querySelectorAll(".pill").forEach((btn) => btn.classList.remove("active"));
+      e.target.classList.add("active");
+      currentFilter = e.target.dataset.filter;
+      renderCars();
+    });
+
+    searchInput.addEventListener("input", renderCars);
+    sortSelect.addEventListener("change", renderCars);
+
+    calcCarSelect.addEventListener("change", updateLeasing);
+    downPaymentRange.addEventListener("input", updateLeasing);
+    monthsRange.addEventListener("input", updateLeasing);
+
+    document.getElementById("testDriveForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("clientName").value.trim();
+      const selectedCar = formCarSelect.value;
+      const feedback = document.getElementById("formFeedback");
+
+      feedback.textContent = `Mulțumim, ${name}! Solicitarea ta de test drive pentru ${selectedCar} a fost înregistrată. Un consilier te va contacta în cel mai scurt timp.`;
+      e.target.reset();
+    });
+
+    document.getElementById("menuToggle").addEventListener("click", () => {
+      document.getElementById("navLinks").classList.toggle("active");
+    });
+
+    populateSelects();
+    renderCars();
+    updateLeasing();
+  </script>
+</body>
+</html>
